@@ -6,7 +6,7 @@ PLATFORM_COOKIE_ALIASES = {
     "xiaohongshu": ["XHS_COOKIE", "XIAOHONGSHU_COOKIE"],
     "pinduoduo": ["PINDUODUO_COOKIE", "PDD_COOKIE"],
     "douyin": ["DOUYIN_COOKIE", "DY_COOKIE"],
-    "yuanbao": ["YUANBAO_COOKIE"],
+    "yuanbao": ["YUANBAO_COOKIE", "WECHAT_CHANNELS_COOKIE"],
     "wechat_channels": ["YUANBAO_COOKIE", "WECHAT_CHANNELS_COOKIE"],
     "doubao": ["DOUBAO_COOKIE"],
     "jimeng": ["JIMENG_COOKIE"],

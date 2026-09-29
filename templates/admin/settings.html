@@ -224,26 +224,25 @@
                                 平台 Cookie 凭据覆盖配置
                             </h2>
                             <p class="text-xs text-slate-500 mt-1">此处配置具有最高优先级（覆盖 <code>.env</code>
-                                环境变量）。保存后无需重启即可即时生效；清空输入框并保存即可自动恢复读取 <code>.env</code> 凭据。</p>
+                                环境变量）。保存后即时生效；支持直接复制粘贴浏览器中的完整 Cookie 字符串或推荐精简字段，清空并保存自动恢复读取 <code>.env</code> 凭据。</p>
                         </div>
                     </div>
 
                     <div class="space-y-5 text-xs">
-                        <!-- 微信视频号 / 腾讯元宝 -->
+                        <!-- 腾讯元宝 (Yuanbao) -->
                         <div class="space-y-1.5">
                             <div class="flex items-center justify-between">
-                                <label for="cookie_wechat_channels"
+                                <label for="cookie_yuanbao"
                                     class="font-semibold text-slate-900 flex items-center gap-2">
-                                    <span>微信视频号 / 腾讯元宝</span>
+                                    <span>腾讯元宝 (Yuanbao)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_wechat_channels</code> /
+                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_yuanbao</code> /
                                     降级环境变量: <code>YUANBAO_COOKIE</code></span>
                             </div>
-                            <textarea id="cookie_wechat_channels" name="cookie_wechat_channels" rows="2"
-                                placeholder="格式例: hybrid_sess=...; pass_ticket=..."
-                                onchange="triggerSettingsSubmit(this)"
-                                class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_wechat_channels', '') }}</textarea>
-                            <p class="text-[11px] text-slate-400">用于解析微信视频号无水印视频与图集内容。</p>
+                            <textarea id="cookie_yuanbao" name="cookie_yuanbao" rows="2"
+                                placeholder="推荐精简字段: hy_user=xxx; hy_token=xxx;" onchange="triggerSettingsSubmit(this)"
+                                class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_yuanbao', settings.get('cookie_wechat_channels', '')) }}</textarea>
+                            <p class="text-[11px] text-slate-400">腾讯元宝登录凭据。用于微信视频号无水印视频/图集及元宝 AI 内容的解析提取。</p>
                         </div>
 
                         <!-- 小红书 -->
@@ -257,7 +256,7 @@
                                     <code>XHS_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_xiaohongshu" name="cookie_xiaohongshu" rows="2"
-                                placeholder="格式例: a1=...; webId=...; web_session=..."
+                                placeholder="推荐精简字段: a1=xxx; webId=xxx; web_session=xxx;"
                                 onchange="triggerSettingsSubmit(this)"
                                 class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_xiaohongshu', '') }}</textarea>
                             <p class="text-[11px] text-slate-400">用于绕过小红书风控阻断与提取高清无水印图集/视频。</p>
@@ -274,7 +273,7 @@
                                     <code>KUAISHOU_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_kuaishou" name="cookie_kuaishou" rows="2"
-                                placeholder="格式例: did=...; kuaishou.server.web_st=..."
+                                placeholder="推荐精简字段: kpf=PC_WEB; kpn=KUAISHOU_VISION; did=xxx;"
                                 onchange="triggerSettingsSubmit(this)"
                                 class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_kuaishou', '') }}</textarea>
                             <p class="text-[11px] text-slate-400">用于解除快手风控阻断或滑块验证要求。</p>
@@ -291,8 +290,7 @@
                                     <code>PINDUODUO_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_pinduoduo" name="cookie_pinduoduo" rows="2"
-                                placeholder="格式例: PDDAccessToken=...; pdd_user_id=..."
-                                onchange="triggerSettingsSubmit(this)"
+                                placeholder="推荐精简字段: PDDAccessToken=xxx;" onchange="triggerSettingsSubmit(this)"
                                 class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_pinduoduo', '') }}</textarea>
                             <p class="text-[11px] text-slate-400">用于拼多多商品/视频页面详情提取。</p>
                         </div>
@@ -307,7 +305,7 @@
                                     <code>DOUYIN_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_douyin" name="cookie_douyin" rows="2"
-                                placeholder="格式例: passport_csrf_token=...; sessionid=..."
+                                placeholder="推荐精简字段 (实况图/受限作品): UIFID=xxx; sessionid=xxx; sessionid_ss=xxx; passport_csrf_token=xxx; odin_tt=xxx;"
                                 onchange="triggerSettingsSubmit(this)"
                                 class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_douyin', '') }}</textarea>
                             <p class="text-[11px] text-slate-400">可选。常规抖音内容免 Cookie，针对受限作品做风控退避。</p>
@@ -322,8 +320,8 @@
                                 <span class="text-[11px] text-slate-400">后台键名: <code>cookie_weibo</code> / 降级环境变量:
                                     <code>WEIBO_COOKIE</code></span>
                             </div>
-                            <textarea id="cookie_weibo" name="cookie_weibo" rows="2"
-                                placeholder="格式例: SUB=...; SUBP=..." onchange="triggerSettingsSubmit(this)"
+                            <textarea id="cookie_weibo" name="cookie_weibo" rows="2" placeholder="推荐精简字段: SUB=xxx;"
+                                onchange="triggerSettingsSubmit(this)"
                                 class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_weibo', '') }}</textarea>
                             <p class="text-[11px] text-slate-400">可选。常规内容免 Cookie，遇到频繁抓包限制时提供。</p>
                         </div>
@@ -337,8 +335,8 @@
                                 <span class="text-[11px] text-slate-400">后台键名: <code>cookie_doubao</code> / 降级环境变量:
                                     <code>DOUBAO_COOKIE</code></span>
                             </div>
-                            <textarea id="cookie_doubao" name="cookie_doubao" rows="2" placeholder="格式例: sessionid=..."
-                                onchange="triggerSettingsSubmit(this)"
+                            <textarea id="cookie_doubao" name="cookie_doubao" rows="2"
+                                placeholder="推荐精简字段: sessionid_ss=xxx;" onchange="triggerSettingsSubmit(this)"
                                 class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_doubao', '') }}</textarea>
                             <p class="text-[11px] text-slate-400">用于提取豆包 AI 对话中的视频/生成媒体。</p>
                         </div>
@@ -352,8 +350,8 @@
                                 <span class="text-[11px] text-slate-400">后台键名: <code>cookie_jimeng</code> / 降级环境变量:
                                     <code>JIMENG_COOKIE</code></span>
                             </div>
-                            <textarea id="cookie_jimeng" name="cookie_jimeng" rows="2" placeholder="格式例: sessionid=..."
-                                onchange="triggerSettingsSubmit(this)"
+                            <textarea id="cookie_jimeng" name="cookie_jimeng" rows="2"
+                                placeholder="推荐精简字段: sessionid=xxx;" onchange="triggerSettingsSubmit(this)"
                                 class="w-full px-3.5 py-2 font-mono text-xs rounded-lg border border-slate-200 focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition bg-slate-50/50 custom-scroll">{{ settings.get('cookie_jimeng', '') }}</textarea>
                             <p class="text-[11px] text-slate-400">用于即梦 AI 生成内容的接口凭据支持。</p>
                         </div>

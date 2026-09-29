@@ -38,6 +38,12 @@ class CookieManagerTest(unittest.TestCase):
                 cookie = get_platform_cookie("wechat_channels")
                 self.assertEqual(cookie, "pass_ticket=from_env;")
 
+    def test_db_setting_yuanbao_reads_wechat_channels_cookie(self):
+        with patch("src.db.setting", side_effect=lambda k: "hybrid_sess=from_db;" if k == "cookie_wechat_channels" else None):
+            with patch.dict(os.environ, {}, clear=True):
+                cookie = get_platform_cookie("yuanbao")
+                self.assertEqual(cookie, "hybrid_sess=from_db;")
+
     def test_supported_platform_aliases(self):
         self.assertIn("xhs", PLATFORM_COOKIE_ALIASES)
         self.assertIn("douyin", PLATFORM_COOKIE_ALIASES)

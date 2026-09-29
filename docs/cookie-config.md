@@ -11,7 +11,7 @@
 | 平台名称 | 环境变量 Key | 别名支持 | 必要性 / 使用场景 | 推荐精简字段 |
 | :--- | :--- | :--- | :--- | :--- |
 | **小红书** | `XHS_COOKIE` | `XIAOHONGSHU_COOKIE` | 🟡 **可选 (防风控)**：日常免 Cookie 解析；机房 IP 遭遇 302 登录拦截时配置 | `a1=xxx; webId=xxx; web_session=xxx;` |
-| **微信视频号** | `YUANBAO_COOKIE` | `WECHAT_CHANNELS_COOKIE` | 🔐 **必需 (媒体流)**：提取视频号无水印视频流与图集（依赖腾讯元宝接口） | `hy_user=xxx; hy_token=xxx;` |
+| **微信视频号** | `YUANBAO_COOKIE` | `WECHAT_CHANNELS_COOKIE` | 🔐 **必需 (媒体流与标题)**：提取视频号无水印视频直链、视频标题与高清图集（微信官方加强了匿名 `generalToken` 鉴权，匿名模式下视频直链与标题为空，必须依赖元宝 Cookie） | `hy_user=xxx; hy_token=xxx;` |
 | **快手** | `KUAISHOU_COOKIE` | `KS_COOKIE` | 🟡 **可选 (防风控)**：日常免 Cookie 解析；触发 `result: 2` 反爬时配置 | `kpf=PC_WEB; kpn=KUAISHOU_VISION; did=xxx;` |
 | **拼多多** | `PINDUODUO_COOKIE` | `PDD_COOKIE` | 🟡 **部分依赖**：商品图集免 Cookie；多多视频短视频流解析需要 | `PDDAccessToken=xxx;` |
 | **豆包 AI** | `DOUBAO_COOKIE` | - | 🟡 **可选 (无水印)**：公开图文免 Cookie；提取 1080P 无水印视频需要 | `sessionid_ss=xxx;` |
