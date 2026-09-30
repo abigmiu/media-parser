@@ -458,7 +458,7 @@ def get_platform_distribution(user_id=None, days=7):
     items = []
     if total_calls > 0:
         cx, cy = 100, 100
-        r_out, r_in = 88, 62
+        r_out, r_in = 88, 64
         current_angle = 0.0  # radians
 
         for idx, row in enumerate(rows):
@@ -532,7 +532,7 @@ def get_platform_distribution(user_id=None, days=7):
 def get_top_users(days=7, limit=10):
     db = get_db()
     sql = (
-        "SELECT u.username, COUNT(l.id) as calls "
+        "SELECT u.id, u.username, COUNT(l.id) as calls "
         "FROM request_logs l "
         "JOIN users u ON u.id = l.user_id "
     )
@@ -547,6 +547,7 @@ def get_top_users(days=7, limit=10):
     max_calls = max((r["calls"] for r in rows), default=1)
     return [
         {
+            "id": r["id"],
             "username": r["username"],
             "calls": r["calls"],
             "pct": round((r["calls"] / max_calls) * 100, 1),

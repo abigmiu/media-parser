@@ -216,16 +216,16 @@
             <!-- Tab 2: 平台凭据 (Cookie) -->
             <div id="tab-content-cookies" class="space-y-6 tab-panel" style="display: none;">
                 <section class="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 shadow-xs space-y-5">
-                    <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
-                        <div>
-                            <h2 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-                                <span class="text-brand flex items-center justify-center">{{ icon('key', 'w-4 h-4')
-                                    }}</span>
-                                平台 Cookie 凭据覆盖配置
-                            </h2>
-                            <p class="text-xs text-slate-500 mt-1">此处配置具有最高优先级（覆盖 <code>.env</code>
-                                环境变量）。保存后即时生效；支持直接复制粘贴浏览器中的完整 Cookie 字符串或推荐精简字段，清空并保存自动恢复读取 <code>.env</code> 凭据。</p>
-                        </div>
+                    <div class="border-b border-slate-100 pb-3">
+                        <h2 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                            <span class="text-brand flex items-center justify-center">{{ icon('key', 'w-4 h-4')
+                                }}</span>
+                            平台 Cookie 凭据覆盖配置
+                        </h2>
+                    </div>
+
+                    <div class="text-xs text-slate-500 leading-relaxed">
+                        此配置<strong>优先级高于 <code>.env</code> 环境变量</strong>，保存即生效。您可以粘贴浏览器的完整 Cookie，也可仅填写推荐的精简字段。若需恢复使用 <code>.env</code> 凭据，直接<strong>清空内容并保存</strong>即可。
                     </div>
 
                     <div class="space-y-5 text-xs">
@@ -236,8 +236,7 @@
                                     class="font-semibold text-slate-900 flex items-center gap-2">
                                     <span>腾讯元宝 (Yuanbao)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_yuanbao</code> /
-                                    降级环境变量: <code>YUANBAO_COOKIE</code></span>
+                                <span class="text-[11px] text-slate-400">留空读取: <code>YUANBAO_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_yuanbao" name="cookie_yuanbao" rows="2"
                                 placeholder="推荐精简字段: hy_user=xxx; hy_token=xxx;" onchange="triggerSettingsSubmit(this)"
@@ -252,8 +251,7 @@
                                     class="font-semibold text-slate-900 flex items-center gap-2">
                                     <span>小红书 (Xiaohongshu)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_xiaohongshu</code> / 降级环境变量:
-                                    <code>XHS_COOKIE</code></span>
+                                <span class="text-[11px] text-slate-400">留空读取: <code>XHS_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_xiaohongshu" name="cookie_xiaohongshu" rows="2"
                                 placeholder="推荐精简字段: a1=xxx; webId=xxx; web_session=xxx;"
@@ -269,8 +267,7 @@
                                     class="font-semibold text-slate-900 flex items-center gap-2">
                                     <span>快手 (Kuaishou)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_kuaishou</code> / 降级环境变量:
-                                    <code>KUAISHOU_COOKIE</code></span>
+                                <span class="text-[11px] text-slate-400">留空读取: <code>KUAISHOU_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_kuaishou" name="cookie_kuaishou" rows="2"
                                 placeholder="推荐精简字段: kpf=PC_WEB; kpn=KUAISHOU_VISION; did=xxx;"
@@ -286,8 +283,7 @@
                                     class="font-semibold text-slate-900 flex items-center gap-2">
                                     <span>拼多多 (Pinduoduo)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_pinduoduo</code> / 降级环境变量:
-                                    <code>PINDUODUO_COOKIE</code></span>
+                                <span class="text-[11px] text-slate-400">留空读取: <code>PINDUODUO_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_pinduoduo" name="cookie_pinduoduo" rows="2"
                                 placeholder="推荐精简字段: PDDAccessToken=xxx;" onchange="triggerSettingsSubmit(this)"
@@ -301,8 +297,7 @@
                                 <label for="cookie_douyin" class="font-semibold text-slate-900 flex items-center gap-2">
                                     <span>抖音 (Douyin)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_douyin</code> / 降级环境变量:
-                                    <code>DOUYIN_COOKIE</code></span>
+                                <span class="text-[11px] text-slate-400">留空读取: <code>DOUYIN_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_douyin" name="cookie_douyin" rows="2"
                                 placeholder="推荐精简字段 (实况图/受限作品): UIFID=xxx; sessionid=xxx; sessionid_ss=xxx; passport_csrf_token=xxx; odin_tt=xxx;"
@@ -317,8 +312,7 @@
                                 <label for="cookie_weibo" class="font-semibold text-slate-900 flex items-center gap-2">
                                     <span>微博 (Weibo)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_weibo</code> / 降级环境变量:
-                                    <code>WEIBO_COOKIE</code></span>
+                                <span class="text-[11px] text-slate-400">留空读取: <code>WEIBO_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_weibo" name="cookie_weibo" rows="2" placeholder="推荐精简字段: SUB=xxx;"
                                 onchange="triggerSettingsSubmit(this)"
@@ -332,8 +326,7 @@
                                 <label for="cookie_doubao" class="font-semibold text-slate-900 flex items-center gap-2">
                                     <span>豆包 AI (Doubao)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_doubao</code> / 降级环境变量:
-                                    <code>DOUBAO_COOKIE</code></span>
+                                <span class="text-[11px] text-slate-400">留空读取: <code>DOUBAO_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_doubao" name="cookie_doubao" rows="2"
                                 placeholder="推荐精简字段: sessionid_ss=xxx;" onchange="triggerSettingsSubmit(this)"
@@ -347,8 +340,7 @@
                                 <label for="cookie_jimeng" class="font-semibold text-slate-900 flex items-center gap-2">
                                     <span>即梦 AI (Jimeng)</span>
                                 </label>
-                                <span class="text-[11px] text-slate-400">后台键名: <code>cookie_jimeng</code> / 降级环境变量:
-                                    <code>JIMENG_COOKIE</code></span>
+                                <span class="text-[11px] text-slate-400">留空读取: <code>JIMENG_COOKIE</code></span>
                             </div>
                             <textarea id="cookie_jimeng" name="cookie_jimeng" rows="2"
                                 placeholder="推荐精简字段: sessionid=xxx;" onchange="triggerSettingsSubmit(this)"
